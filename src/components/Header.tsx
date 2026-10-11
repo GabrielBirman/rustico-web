@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { ShoppingCart, Menu, X } from "lucide-react";
-import { useCart } from "@/context/CartContext";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -12,7 +11,6 @@ const navLinks = [
 ];
 
 const Header = () => {
-  const { totalItems, setIsCartOpen } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -36,21 +34,8 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Cart + mobile toggle */}
+        {/* Mobile toggle */}
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative p-2 rounded-lg hover:bg-accent transition-colors"
-            aria-label="Abrir carrito"
-          >
-            <ShoppingCart className="h-5 w-5 text-foreground" />
-            {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
-          </button>
-
           <button
             className="md:hidden p-2 rounded-lg hover:bg-accent transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}

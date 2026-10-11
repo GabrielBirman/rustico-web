@@ -5,8 +5,6 @@ import AboutSection from "@/components/AboutSection";
 import WholesaleSection from "@/components/WholesaleSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
-import FloatingCartButton from "@/components/FloatingCartButton";
 
 const Index = () => {
   return (
@@ -20,8 +18,6 @@ const Index = () => {
         <ContactSection />
       </main>
       <Footer />
-      <CartDrawer />
-      <FloatingCartButton />
     </>
   );
 };

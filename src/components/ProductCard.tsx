@@ -1,5 +1,5 @@
-import { Plus } from "lucide-react";
-import { useCart, type Product } from "@/context/CartContext";
+import { MessageCircle } from "lucide-react";
+import type { Product } from "@/data/products";
 import { motion } from "framer-motion";
 
 interface ProductCardProps {
@@ -7,8 +7,10 @@ interface ProductCardProps {
   index: number;
 }
 
+const WHATSAPP_NUMBER = "5491150513698"; // 11 5051-3698
+
 const ProductCard = ({ product, index }: ProductCardProps) => {
-  const { addItem } = useCart();
+  const orderUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola! Quiero pedir ${product.name} 🍕`)}`;
 
   return (
     <motion.div
@@ -41,14 +43,16 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
           <span className="font-display text-2xl font-bold text-primary">
             ${product.price.toLocaleString("es-AR")}
           </span>
-          <button
-            onClick={() => addItem(product)}
+          <a
+            href={orderUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-sm hover:bg-tomato-dark transition-colors"
-            aria-label={`Agregar ${product.name} al carrito`}
+            aria-label={`Pedir ${product.name} por WhatsApp`}
           >
-            <Plus className="h-4 w-4" />
-            Agregar
-          </button>
+            <MessageCircle className="h-4 w-4" />
+            Pedir
+          </a>
         </div>
       </div>
     </motion.div>
